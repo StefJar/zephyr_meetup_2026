@@ -1,0 +1,40 @@
+#include <dt-bindings/pwm/pwm.h>
+
+#define PWM_OUT_GPIO 15
+#define FB_GPIO 2
+
+
+/ {
+    aliases {
+        pwm-out = &pwm;
+    };
+
+    flyback_cfg {
+        pwm_out_gpio = <PWM_OUT_GPIO>;
+        feedback_gpio = <FB_GPIO>;
+    };
+};
+
+&pwm {
+    status = "okay";
+
+    pinctrl-0 = <&flyback_pwm_pins>;
+    pinctrl-names = "default";
+};
+
+&pinctrl {
+
+    flyback_pwm_pins: flyback_pwm_pins {
+        group0 {
+            pinmux = <RP2XXX_PINMUX(PWM_OUT_GPIO, RP2_PINCTRL_GPIO_FUNC_PWM)>;
+        };
+    };
+
+    feedback_in_pins: feedback_in_pins {
+        group0 {
+            pinmux = <RP2XXX_PINMUX(FB_GPIO, RP2_PINCTRL_GPIO_FUNC_SIO)>;
+            input-enable;
+        };
+    };
+};
+

@@ -1,0 +1,9 @@
+Closing the Loop with Zephyr: Real-Time Flyback Control Using Zero-Latency Interrupts and CMSIS-DSP
+
+This talk presents the firmware architecture developed for a discrete wide-input flyback converter designed for long-term industrial applications as part of a master's thesis.
+
+The converter employs a Peak-Current-Mode control scheme distributed across two Raspberry Pi RP2354B microcontrollers. The primary-side controller executes the inner current-control loop, while the secondary-side controller implements the outer voltage-control loop. To meet the strict timing requirements of switch-mode power supply control, the firmware is built on Zephyr RTOS and leverages several advanced real-time features.
+
+The presentation focuses on the implementation of deterministic control loops using Zephyr's Zero-Latency Interrupts for ADC sampling and current-limit detection, ensuring interrupt response times independent of kernel activity. ADC acquisition is synchronized with the switching cycle, and sampled data is processed using the Arm CMSIS-DSP library, which provides an efficient fixed-point PID controller implementation for the voltage regulation loop. The resulting control output is translated into PWM signals that communicate the current reference between the converter stages.
+
+Attendees will gain practical insights into combining Zephyr RTOS, Cortex-M33 microcontrollers, Zero-Latency ISRs, ADC pipelines, CMSIS-DSP, and PWM generation to build high-performance real-time control applications. The session will also discuss architectural trade-offs, timing considerations, and lessons learned while implementing a digitally controlled flyback converter on resource-constrained embedded hardware.

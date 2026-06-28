@@ -1,0 +1,85 @@
+============================================================
+FLYBACK POWER SUPPLY BOM COST COMPARISON (2026 estimate)
+============================================================
+
+------------------------------------------------------------
+1. SMALL / LOW-COST CHARGER (5–30 W)
+IC class: TI UCC28740 / onsemi NCP1342
+------------------------------------------------------------
+
+Flyback controller IC            : 0.80 – 1.50 €
+MOSFET (or integrated switch)   : 0.30 – 1.20 €
+Transformer                      : 1.00 – 3.00 €
+Rectifier / diode               : 0.10 – 0.50 €
+Optocoupler / feedback          : 0.10 – 0.40 €
+Passives (caps, resistors)      : 0.80 – 2.00 €
+
+TOTAL BOM COST                  : 3.0 – 7.5 €
+
+------------------------------------------------------------
+2. MEDIUM / CONSUMER PSU (30–150 W)
+IC class: Infineon ICE2 / ICE3, TI UCC256xx
+------------------------------------------------------------
+
+Controller IC                   : 1.50 – 3.50 €
+MOSFET (external)               : 0.80 – 2.50 €
+Transformer                     : 2.50 – 6.00 €
+Current sense / protection      : 0.30 – 1.00 €
+Optocoupler + TL431 loop        : 0.20 – 0.60 €
+EMI filter + passives           : 1.50 – 4.00 €
+
+TOTAL BOM COST                  : 6 – 17 €
+
+------------------------------------------------------------
+3. HEAVY / INDUSTRIAL PSU (150–1000 W)
+Digital / resonant / multi-phase systems
+------------------------------------------------------------
+
+Controller IC                   : 3 – 15 €
+MOSFET / SiC / GaN stage        : 5 – 25 €
+Transformer                     : 10 – 40 €
+Current sensing (shunt / Hall)  : 2 – 10 €
+Isolation / digital isolators   : 2 – 8 €
+EMI + protection network        : 5 – 20 €
+Thermal + mechanical            : 5 – 15 €
+
+TOTAL BOM COST                  : 30 – 120 €
+
+------------------------------------------------------------
+4. RP2350 MCU-BASED FLYBACK (your design)
+------------------------------------------------------------
+
+RP2350 MCU board               : 3.50 – 7.00 €
+Power MOSFET                   : 1.00 – 3.00 €
+Gate driver (optional)         : 0.50 – 2.50 €
+Transformer                    : 2.50 – 8.00 €
+Current / voltage sensing      : 1.00 – 5.00 €
+Isolation (opto / digital)     : 0.20 – 1.00 €
+Passives + filter network      : 2.00 – 6.00 €
+PCB + layout complexity        : 2.00 – 10.00 €
+
+TOTAL BOM COST                : 12 – 40 €
+
+============================================================
+SUMMARY
+============================================================
+
+Small charger (IC-based)   : 3 – 7.5 €
+Medium PSU                 : 6 – 17 €
+Heavy PSU                  : 30 – 120 €
+Your RP2350 design         : 12 – 40 €
+
+============================================================
+KEY INSIGHT
+============================================================
+
+IC-based systems:
+- minimal BOM
+- fixed control law
+- hardware-optimized feedback loops
+
+MCU-based system (yours):
+- higher BOM
+- fully programmable control
+- replaces analog control loop with DSP + ISR
+============================================================
